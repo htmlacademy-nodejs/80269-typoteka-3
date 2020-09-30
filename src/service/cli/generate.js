@@ -1,5 +1,16 @@
 'use strict';
 
+
+const fs = require(`fs`);
+const {
+  getRandomInt,
+  getShuffledArray,
+} = require(`../../utils`);
+const {
+  MILLISECONDS_IN_MONTH, ExitCode,
+} = require(`../../constants`);
+
+
 const DEFAULT_COUNT = 1;
 const MAX_COUNT = 1000;
 const FILE_NAME = `mocks.json`;
@@ -55,12 +66,20 @@ const CATEGORIES = [
 ];
 
 
-const _generateOffer = () => {
-  const title = ``;
-  const createDate = ``;
-  const announce = ``;
-  const fullText = ``;
-  const category = ``;
+const _generatePost = () => {
+  const title = TITLES[getRandomInt(0, TITLES.length - 1)];
+  const createDate = new Date(getRandomInt(
+      Date.now() - MILLISECONDS_IN_MONTH * 3,
+      Date.now()
+  ));
+
+  const fullTextSentences = getShuffledArray(SENTENCES)
+    .slice(0, getRandomInt(5, SENTENCES.length));
+
+  const announce = fullTextSentences.slice(0, 5).join(` `);
+  const fullText = fullTextSentences.join(` `);
+  const category = getShuffledArray(CATEGORIES)
+    .slice(0, getRandomInt(1, 3));
 
   return {
     title,
@@ -75,6 +94,25 @@ const _generateOffer = () => {
 module.exports = {
   name: `--generate`,
   run(args) {
-    
-  }
+    const [count] = args;
+    const postsCount = Number.parseInt(count, 10) || DEFAULT_COUNT;
+
+    if (postsCount > MAX_COUNT || postsCount < DEFAULT_COUNT) {
+      console.error(`Генерируется не менее 1, но не более 1000 публикаций.`);
+      process.exit(ExitCode.ERROR);
+    }
+
+    const posts = Array(postsCount)
+      .fill({})
+      .map(_generatePost);
+    const content = JSON.stringify(posts);
+
+    fs.writeFile(FILE_NAME, content, (err) => {
+      if (err) {
+        console.error(`Невозможно записать данные в файл!`);
+      }
+
+      console.info(`Файл с моковыми данными успешно создан!`);
+    });
+  },
 };
