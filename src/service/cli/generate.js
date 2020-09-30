@@ -74,7 +74,7 @@ const _generateOffer = () => {
 
 module.exports = {
   name: `--generate`,
-  run() {
-
+  run(args) {
+    
   }
 };
