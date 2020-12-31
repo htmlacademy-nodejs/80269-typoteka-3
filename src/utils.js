@@ -9,7 +9,7 @@ const getRandomInt = (min, max) => {
 
 const getShuffledArray = (array) => {
   array = array.slice();
-  for (let i = array.length -1; i > 0; i--) {
+  for (let i = array.length - 1; i > 0; i--) {
     const randomIndex = Math.floor(Math.random() * i);
     [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
   }
