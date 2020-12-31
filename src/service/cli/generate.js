@@ -2,7 +2,7 @@
 
 
 const chalk = require(`chalk`);
-const fs = require(`fs`);
+const fs = require(`fs`).promises;
 const {
   getRandomInt,
   getShuffledArray,
@@ -94,7 +94,7 @@ const _generatePost = () => {
 
 module.exports = {
   name: `--generate`,
-  run(args) {
+  async run(args) {
     const [count] = args;
     const postsCount = Number.parseInt(count, 10) || DEFAULT_COUNT;
 
@@ -108,12 +108,11 @@ module.exports = {
       .map(_generatePost);
     const content = JSON.stringify(posts);
 
-    fs.writeFile(FILE_NAME, content, (err) => {
-      if (err) {
-        console.error(chalk.red(`Невозможно записать данные в файл!`));
-      }
-
+    try {
+      await fs.writeFile(FILE_NAME, content);
       console.info(chalk.green(`Файл с моковыми данными успешно создан!`));
-    });
+    } catch (err) {
+      console.error(chalk.red(`Невозможно записать данные в файл!`));
+    }
   },
 };
