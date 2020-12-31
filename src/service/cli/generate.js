@@ -1,6 +1,7 @@
 'use strict';
 
 
+const chalk = require(`chalk`);
 const fs = require(`fs`);
 const {
   getRandomInt,
@@ -98,7 +99,7 @@ module.exports = {
     const postsCount = Number.parseInt(count, 10) || DEFAULT_COUNT;
 
     if (postsCount > MAX_COUNT || postsCount < DEFAULT_COUNT) {
-      console.error(`Генерируется не менее 1, но не более 1000 публикаций.`);
+      console.error(chalk.red(`Генерируется не менее 1, но не более 1000 публикаций.`));
       process.exit(ExitCode.ERROR);
     }
 
@@ -109,10 +110,10 @@ module.exports = {
 
     fs.writeFile(FILE_NAME, content, (err) => {
       if (err) {
-        console.error(`Невозможно записать данные в файл!`);
+        console.error(chalk.red(`Невозможно записать данные в файл!`));
       }
 
-      console.info(`Файл с моковыми данными успешно создан!`);
+      console.info(chalk.green(`Файл с моковыми данными успешно создан!`));
     });
   },
 };
