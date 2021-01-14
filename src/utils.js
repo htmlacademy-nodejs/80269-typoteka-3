@@ -19,7 +19,7 @@ const getShuffledArray = (array) => {
   return array;
 };
 
-const readFile = async (filePath) => {
+const readMockFile = async (filePath) => {
   try {
     const fileContent = await fs.readFile(filePath, `utf8`);
     return fileContent
@@ -36,5 +36,5 @@ const readFile = async (filePath) => {
 module.exports = {
   getRandomInt,
   getShuffledArray,
-  readFile,
+  readMockFile,
 };

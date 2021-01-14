@@ -1,12 +1,11 @@
 'use strict';
 
-
 const chalk = require(`chalk`);
 const fs = require(`fs`).promises;
 const {
   getRandomInt,
   getShuffledArray,
-  readFile,
+  readMockFile,
 } = require(`../../utils`);
 const {
   ExitCode,
@@ -63,9 +62,9 @@ module.exports = {
       sentences,
       categories,
     ] = await Promise.all([
-      readFile(FILE_TITLES_NAME),
-      readFile(FILE_SENTENCES_NAME),
-      readFile(FILE_CATEGORIES_NAME),
+      readMockFile(FILE_TITLES_NAME),
+      readMockFile(FILE_SENTENCES_NAME),
+      readMockFile(FILE_CATEGORIES_NAME),
     ]);
 
     const posts = Array(postsCount)
