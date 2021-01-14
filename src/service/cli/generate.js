@@ -46,7 +46,6 @@ const _generatePost = (titles, sentences, categories) => {
 };
 
 
-
 module.exports = {
   name: `--generate`,
   async run(args) {

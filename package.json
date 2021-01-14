@@ -6,7 +6,8 @@
   "scripts": {
     "eslint": "eslint --ext .js src/",
     "start": "node ./src/service/service.js",
-    "test": "npm run eslint"
+    "test": "npm run eslint",
+    "server": "nodemon ./src/service/service.js --server"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,8 @@
   "homepage": "https://github.com/nigel-riss/80269-typoteka-3#readme",
   "devDependencies": {
     "eslint": "6.8.0",
-    "eslint-config-htmlacademy": "0.5.2"
+    "eslint-config-htmlacademy": "0.5.2",
+    "nodemon": "2.0.7"
   },
   "dependencies": {
     "chalk": "4.1.0"

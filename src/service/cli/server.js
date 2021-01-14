@@ -37,7 +37,7 @@ module.exports = {
     const onClientConnect = async (req, res) => {
       switch (req.url) {
         case `/`:
-          try{
+          try {
             const fileContent = await fs.readFile(FILENAME);
             const mocks = JSON.parse(fileContent);
             const message = mocks
