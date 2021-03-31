@@ -14,8 +14,8 @@ mainRouter.get(`/register`, (_req, res) => {
 mainRouter.get(`/login`, (_req, res) => {
   res.render(`login`);
 });
-mainRouter.get(`/search`, (req, res) => {
-  res.send(`/search`);
+mainRouter.get(`/search`, (_req, res) => {
+  res.render(`search`);
 });
 mainRouter.get(`/categories`, (req, res) => {
   res.send(`/categories`);
