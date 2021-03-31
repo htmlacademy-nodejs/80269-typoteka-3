@@ -5,6 +5,7 @@ const path = require(`path`);
 const mainRoutes = require(`./routes/main.js`);
 const myRoutes = require(`./routes/my.js`);
 const articlesRoutes = require(`./routes/articles.js`);
+const HttpCode = require(`../constants.js`).HttpCode;
 
 
 const DEFAULT_PORT = 8080;
@@ -20,6 +21,10 @@ app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
 app.use(`/`, mainRoutes);
 app.use(`/my`, myRoutes);
 app.use(`/articles`, articlesRoutes);
+
+app.use((_req, res) => {
+  res.status(HttpCode.NOT_FOUND).render(`errors/404`);
+});
 
 app.listen(DEFAULT_PORT, () => {
   console.log(`Server runs on port: ${DEFAULT_PORT}`);
