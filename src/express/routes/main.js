@@ -9,11 +9,10 @@ mainRouter.get(`/`, (_req, res) => {
   res.render(`main`);
 });
 mainRouter.get(`/register`, (_req, res) => {
-  throw new Error();
-  res.send(`/register`);
+  res.render(`sign-up`);
 });
-mainRouter.get(`/login`, (req, res) => {
-  res.send(`/login`);
+mainRouter.get(`/login`, (_req, res) => {
+  res.render(`login`);
 });
 mainRouter.get(`/search`, (req, res) => {
   res.send(`/search`);
