@@ -5,20 +5,20 @@ const {Router} = require(`express`);
 
 const mainRouter = new Router();
 
-mainRouter.get(`/`, (req, res) => {
-  res.send(`/`);
+mainRouter.get(`/`, (_req, res) => {
+  res.render(`main`);
 });
-mainRouter.get(`/register`, (req, res) => {
-  res.send(`/register`);
+mainRouter.get(`/register`, (_req, res) => {
+  res.render(`sign-up`);
 });
-mainRouter.get(`/login`, (req, res) => {
-  res.send(`/login`);
+mainRouter.get(`/login`, (_req, res) => {
+  res.render(`login`);
 });
-mainRouter.get(`/search`, (req, res) => {
-  res.send(`/search`);
+mainRouter.get(`/search`, (_req, res) => {
+  res.render(`search`);
 });
-mainRouter.get(`/categories`, (req, res) => {
-  res.send(`/categories`);
+mainRouter.get(`/categories`, (_req, res) => {
+  res.render(`all-categories`);
 });
 
 
