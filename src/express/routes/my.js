@@ -5,10 +5,10 @@ const {Router} = require(`express`);
 
 const myRouter = new Router();
 
-myRouter.get(`/`, (req, res) => {
+myRouter.get(`/`, (_req, res) => {
   res.send(`/my`);
 });
-myRouter.get(`/comments`, (req, res) => {
+myRouter.get(`/comments`, (_req, res) => {
   res.send(`/my/comments`);
 });
 

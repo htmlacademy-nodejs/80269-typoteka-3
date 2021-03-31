@@ -1,0 +1,13 @@
+doctype html
+html(lang='ru')
+  include ./partials/_head.pug
+
+
+  body
+    .wrapper
+      include ./partials/_header-logged.pug
+      block content
+      include ./partials/_footer.pug
+
+    //- script(src="/js/vendor.js")
+    //- script(src="/js/main.js")

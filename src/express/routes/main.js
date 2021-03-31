@@ -17,8 +17,8 @@ mainRouter.get(`/login`, (_req, res) => {
 mainRouter.get(`/search`, (_req, res) => {
   res.render(`search`);
 });
-mainRouter.get(`/categories`, (req, res) => {
-  res.send(`/categories`);
+mainRouter.get(`/categories`, (_req, res) => {
+  res.render(`all-categories`);
 });
 
 
