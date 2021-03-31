@@ -5,8 +5,8 @@ const {Router} = require(`express`);
 
 const mainRouter = new Router();
 
-mainRouter.get(`/`, (req, res) => {
-  res.send(`/`);
+mainRouter.get(`/`, (_req, res) => {
+  res.render(`main`);
 });
 mainRouter.get(`/register`, (req, res) => {
   res.send(`/register`);
